@@ -1,0 +1,19 @@
+{
+  "name": "kubernetesdeploy",
+  "version": "1.0.1",
+  "description": "k8s deploy ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrseyh/kubernetesdeploy.git"
+  },
+  "author": "mrseyh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrseyh/kubernetesdeploy/issues"
+  },
+  "homepage": "https://github.com/mrseyh/kubernetesdeploy#readme"
+}
