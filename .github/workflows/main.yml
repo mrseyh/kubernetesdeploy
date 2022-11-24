@@ -34,4 +34,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: github.com/mrseyh/kubernetesdeploy:latest
+          tags: ghcr.io/mrseyh/kubernetesdeploy:latest
