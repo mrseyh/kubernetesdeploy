@@ -1,0 +1,37 @@
+name: CI/CD
+
+on:
+  pull_request:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.4.1     
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to container registry
+        uses: docker/login-action@v2.0.0
+        with:
+          registry: ghcr.io
+          username:
+          password:
+
+      - name: build and push Docker image
+        uses: docker/build-push-action@v3.1.1
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/mrseyh/devopstask:latest
