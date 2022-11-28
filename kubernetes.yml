@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: test-deployment
-  namespace: devops
+  name: first-deployment
+  namespace: mrseyh
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: test-deployment
+      app: first-deployment
   template:
     metadata:
       labels:
-        app: test-deployment
+        app: first-deployment
     spec:
       containers:
-      - name: test-deployment
+      - name: first-deployment
         image: mrseyh/devopstask:latest
         ports:
         - containerPort: 8080
@@ -22,11 +22,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: test-service
-  namespace: devops
+  name: first-service
+  namespace: mrseyh
 spec:
   selector:
-    app: test-deployment
+    app: first-deployment
   ports:
     - protocol: TCP
       port: 80
@@ -35,8 +35,8 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: test-ingress
-  namespace: devops
+  name: first-ingress
+  namespace: mrseyh
 spec:
   rules:
     - host: mrseyh-dart.fria.io
@@ -46,6 +46,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: test-service
+                name: first-service
                 port:
                   number: 80
