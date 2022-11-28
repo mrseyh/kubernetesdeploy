@@ -36,12 +36,14 @@ jobs:
           push: true
           tags: ghcr.io/mrseyh/kubernetesdeploy:latest
       
-      -name: Kubernetes Set Context
-       uses: Azure/k8s-set-context@v3.0
-       with:
-         kubeconfig: ${{secrets.KUBERNETES_SECRET}}
+      - name: Kubernetes Set Context
+        uses: Azure/k8s-set-context@v3.0
+        with:
+          kubeconfig: ${{secrets.KUBERNETES_SECRET}}
 
-      -name: Deployment
-       uses: Azure/k8s-deploy@v4 
-         manifests: kubernetes.yml
-         image: mrseyh/devopstask:latest
+      - name: Deployment
+        uses: Azure/k8s-deploy@v4
+        with:
+          namespace: mrseyh 
+          manifests: kubernetes.yml
+          image: mrseyh/devopstask:latest
